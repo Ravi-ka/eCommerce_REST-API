@@ -8,6 +8,15 @@ export default class ProductController{
         res.status(200).send(productList)
     }
 
+    getProductById(req, res){
+        const id = req.params.id;
+        const productFound = ProductModel.getById(id);
+        if(productFound){
+            res.status(200).send(productFound)
+        }
+        else res.status(404).send("Product Not Found")
+    }
+
     addNewProduct(req, res){
         const {name, price, sizes,category} = req.body;
         const newProduct = {

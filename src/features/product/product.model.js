@@ -20,6 +20,12 @@ export default class ProductModel{
         return result;
     }
 
+    static getById(id){
+     const productFound = products.find(u=>u.id == id)
+     console.log(productFound)
+     return productFound;
+    }
+
 }
 
 export var products = [
