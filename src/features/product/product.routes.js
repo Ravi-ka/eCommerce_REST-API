@@ -12,6 +12,7 @@ const productController = new ProductController();
 ProductRouter.get('/getAllProducts',productController.getAllProducts)
 ProductRouter.get('/get/:id',productController.getProductById)
 ProductRouter.post('/addProduct',upload.single('imageUrl'),productController.addNewProduct)
+ProductRouter.get('/filter',productController.filterProducts)
 
 
 

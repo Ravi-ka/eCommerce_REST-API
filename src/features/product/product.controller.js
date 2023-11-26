@@ -34,6 +34,14 @@ export default class ProductController{
         else res.send('Something went wrong while adding the product')
     }
 
-
-
+    filterProducts(req, res){
+        const minPrice = req.query.minPrice;
+        const maxPrice = req.query.maxPrice;
+        const category = req.query.category;
+        const result = ProductModel.filter(minPrice, maxPrice, category)
+        if(result)
+            res.status(200).send(result)
+        else
+            res.status(404).send('Something went wrong')
+    }
 }
