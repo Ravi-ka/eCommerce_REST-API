@@ -1,0 +1,7 @@
+# ProductController
+    - Get Products 
+    - Add a product
+    - Get One product
+    - Rate a product
+
+    
