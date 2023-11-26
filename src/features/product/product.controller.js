@@ -9,7 +9,15 @@ export default class ProductController{
     }
 
     addNewProduct(req, res){
-        const newProduct = req.body;
+        const {name, price, sizes,category} = req.body;
+        const newProduct = {
+            name, 
+            price:parseFloat(price), 
+            imageUrl: req.file.filename,
+            category,
+            size:sizes.split(','),
+            
+        }
         const result = ProductModel.addProduct(newProduct);
         if(result){
             res.status(201).send(products)

@@ -15,8 +15,8 @@ export default class ProductModel{
     }
 
     static addProduct(newProduct){
-        const result = products.push(newProduct)
-        //console.log(products)
+        newProduct.id = products.length+1;
+        const result = products.push(newProduct);
         return result;
     }
 
