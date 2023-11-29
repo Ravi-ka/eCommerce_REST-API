@@ -4,4 +4,6 @@
     - Get One product
     - Rate a product
 
-    
+# UserController
+- SignUp - Email, Name, Password, TypeOfUser(Customer/Seller)
+- SignIn - Email, Password

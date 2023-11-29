@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 
 import ProductRouter from "./src/features/product/product.routes.js";
+import UserRouter from "./src/features/user/user.routes.js";
 
 const server = express();
 const port = 4000;
@@ -11,11 +12,19 @@ server.use(bodyParser.urlencoded({
 }))
 server.use(bodyParser.json())
 
+
+// Default Routes
 server.get('/',(req, res)=>{
     res.send('<center><h2>Welcome to the eCommerce REST API</h2></center>')
 })
-server.use('/api/products',ProductRouter)
 
+// Products Route
+server.use('/api/products',ProductRouter)
+// User Routes
+server.use('/api/user',UserRouter)
+
+
+// Listening Port
 server.listen(port,(err)=>{
     if(err)
         console.log(err)
