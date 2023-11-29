@@ -15,14 +15,15 @@ export default class ProductModel{
     }
 
     static addProduct(newProduct){
-        newProduct.id = products.length+1;
-        const result = products.push(newProduct);
+        const id = products.length+1;
+        const newEntry = {id,...newProduct}
+        console.log(newEntry)
+        const result = products.push(newEntry);
         return result;
     }
 
     static getById(id){
      const productFound = products.find(u=>u.id == id)
-     console.log(productFound)
      return productFound;
     }
 
