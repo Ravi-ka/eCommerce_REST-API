@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 
 import ProductRouter from "./src/features/product/product.routes.js";
 import UserRouter from "./src/features/user/user.routes.js";
+import basicAuthorizer from "./src/middlewares/basicAuth.middleware.js";
 
 const server = express();
 const port = 4000;
@@ -19,7 +20,7 @@ server.get('/',(req, res)=>{
 })
 
 // Products Route
-server.use('/api/products',ProductRouter)
+server.use('/api/products',basicAuthorizer,ProductRouter)
 // User Routes
 server.use('/api/user',UserRouter)
 
