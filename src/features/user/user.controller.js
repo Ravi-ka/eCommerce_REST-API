@@ -1,3 +1,5 @@
+import jwt from "jsonwebtoken";
+
 import UserModel from "./user.model.js";
 
 export default class UserController{
@@ -11,9 +13,19 @@ export default class UserController{
     signIn(req, res){
         const {email, password} = req.body;
         const checkUser = UserModel.SignIn(email, password)
-        if(checkUser)
-            return res.status(200).send('Login Successful')
-        else
+        if(!checkUser)
             return res.status(400).send('User Not Found or Incorrect Credentials')
+        else{
+            const token = jwt.sign({
+                userID : checkUser.id,
+                email : checkUser.email
+            },"xfv1jbNKTc4hbPUS9OXPBQ30iVlmqA4T",{
+                algorithm : "HS256",
+                expiresIn:"1h"
+            })
+
+            res.status(200).send(token)
+        }
+            
     }
 }
