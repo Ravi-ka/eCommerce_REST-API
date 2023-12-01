@@ -22,11 +22,18 @@ export default class UserModel {
     return checkUser;
   }
 
-  static getAllUsers(){
+  static getAllUsers() {
     return userData;
   }
 }
 
 let userData = [
   new UserModel(1, "Seller User", "seller@test.com", "testseller", "seller"),
+  new UserModel(
+    2,
+    "Customer User",
+    "customer@test.com",
+    "testcustomer",
+    "customer"
+  ),
 ];

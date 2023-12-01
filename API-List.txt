@@ -1,9 +1,9 @@
 # ProductController
-    - Get Products 
-    - Add a product
-    - Get One product
+    - Get all Products - Done
+    - Add a product - Done
+    - Get One product - Done
     - Rate a product
 
 # UserController
-- SignUp - Email, Name, Password, TypeOfUser(Customer/Seller)
-- SignIn - Email, Password
+- SignUp - Email, Name, Password, TypeOfUser(Customer/Seller) - Done
+- SignIn - Email, Password - Done
