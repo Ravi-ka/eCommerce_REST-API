@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 
 import ProductRouter from "./src/features/product/product.routes.js";
 import UserRouter from "./src/features/user/user.routes.js";
+import CartRouter from "./src/features/cart/cartItem.routes.js";
 import basicAuthorizer from "./src/middlewares/basicAuth.middleware.js";
 import jwtAuth from "./src/middlewares/jwt.middleware.js";
 
@@ -25,6 +26,8 @@ server.get("/", (req, res) => {
 server.use("/api/products", jwtAuth, ProductRouter);
 // User Routes
 server.use("/api/user", UserRouter);
+// CartItem Routes
+server.use("/api/cart", jwtAuth, CartRouter);
 
 // Listening Port
 server.listen(port, (err) => {

@@ -10,6 +10,7 @@ export default function jwtAuth(req, res, next) {
   // 3. Check if the token is valid
   try {
     const payload = jwt.verify(token, "xfv1jbNKTc4hbPUS9OXPBQ30iVlmqA4T");
+    req.userID = payload.userID;
     console.log(payload);
   } catch (error) {
     // 4. Return the error
