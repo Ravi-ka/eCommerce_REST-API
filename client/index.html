@@ -14,13 +14,15 @@
   <body>
     <center><h2>Products Page</h2></center>
     <hr />
-    <table class="table">
+    <table class="table bg-transparent">
       <thead>
         <tr>
           <th scope="col">ID</th>
           <th scope="col">Name</th>
           <th scope="col">Description</th>
           <th scope="col">Price</th>
+          <th scope="col">ImageUrl</th>
+          <th scope="col">CategoryID</th>
         </tr>
       </thead>
       <tbody id="product-listing"></tbody>
@@ -57,6 +59,14 @@
             const pricecell = document.createElement("td");
             pricecell.textContent = item.price;
             tableRow.appendChild(pricecell);
+
+            const imagecell = document.createElement("td");
+            imagecell.textContent = item.imageUrl;
+            tableRow.appendChild(imagecell);
+
+            const Categorycell = document.createElement("td");
+            Categorycell.textContent = item.category;
+            tableRow.appendChild(Categorycell);
 
             tableBody.appendChild(tableRow);
           });

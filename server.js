@@ -1,5 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
+import cors from "cors";
 
 import ProductRouter from "./src/features/product/product.routes.js";
 import UserRouter from "./src/features/user/user.routes.js";
@@ -11,6 +12,11 @@ const server = express();
 const port = 4000;
 
 // CORS Policy Configuration
+const corsOptions = {
+  origin: "http://127.0.0.1:5500",
+};
+server.use(cors(corsOptions));
+/*
 server.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
   res.header("Access-Control-Allow-Headers", "*");
@@ -21,6 +27,7 @@ server.use((req, res, next) => {
   }
   next();
 });
+*/
 
 server.use(
   bodyParser.urlencoded({
