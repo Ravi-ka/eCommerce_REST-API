@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <center><h2>Products Page</h2></center>
+    <hr />
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Price</th>
+        </tr>
+      </thead>
+      <tbody id="product-listing"></tbody>
+    </table>
+
+    <script>
+      const token =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjIsImVtYWlsIjoiY3VzdG9tZXJAdGVzdC5jb20iLCJpYXQiOjE3MDE1MzQ3MzMsImV4cCI6MTcwMTUzODMzM30.eTJ-7-p61C7fMsS-99dSj2p3IEyrBr0QPfCArv3fTSk";
+      fetch("http://127.0.0.1:4000/api/products/getAllProducts", {
+        method: "GET",
+        headers: {
+          Authorization: token,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          const tableBody = document.getElementById("product-listing");
+          data.forEach((item) => {
+            const tableRow = document.createElement("tr");
+
+            const idcell = document.createElement("td");
+            idcell.textContent = item.id;
+            tableRow.appendChild(idcell);
+
+            const namecell = document.createElement("td");
+            namecell.textContent = item.name;
+            tableRow.appendChild(namecell);
+
+            const descriptioncell = document.createElement("td");
+            descriptioncell.textContent = item.desc;
+            tableRow.appendChild(descriptioncell);
+
+            const pricecell = document.createElement("td");
+            pricecell.textContent = item.price;
+            tableRow.appendChild(pricecell);
+
+            tableBody.appendChild(tableRow);
+          });
+        })
+        .catch((error) => console.log(error));
+    </script>
+  </body>
+</html>

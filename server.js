@@ -10,6 +10,18 @@ import jwtAuth from "./src/middlewares/jwt.middleware.js";
 const server = express();
 const port = 4000;
 
+// CORS Policy Configuration
+server.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
+  res.header("Access-Control-Allow-Headers", "*");
+  res.header("Access-Control-Allow-Methods", "*");
+  // Return '200' for the preflight request
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200);
+  }
+  next();
+});
+
 server.use(
   bodyParser.urlencoded({
     extended: true,
