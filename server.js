@@ -29,6 +29,15 @@ server.use("/api/user", UserRouter);
 // CartItem Routes
 server.use("/api/cart", jwtAuth, CartRouter);
 
+// Handling 404 requests
+server.use("*", (req, res) => {
+  res
+    .status(404)
+    .send(
+      `The requested path ${req.originalUrl} is not found. Please check our documentation for more information.`
+    );
+});
+
 // Listening Port
 server.listen(port, (err) => {
   if (err) console.log(err);
