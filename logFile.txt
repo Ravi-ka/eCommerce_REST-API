@@ -1,6 +1,7 @@
-Sun Dec 03 2023 21:56:20 GMT+0530 (India Standard Time). Log Data : /api/user/signuukhk - {"email":"customer@test.com","password":"testcustomer"} - POST
-
-Sun Dec 03 2023 21:56:21 GMT+0530 (India Standard Time). Log Data : /api/user/signuukhk - {"email":"customer@test.com","password":"testcustomer"} - POST
-
-Sun Dec 03 2023 21:56:22 GMT+0530 (India Standard Time). Log Data : /api/user/signuukhk - {"email":"customer@test.com","password":"testcustomer"} - POST
-
+{"level":"info","message":"/api/user/signup - {\"email\":\"customer@test.com\",\"password\":\"testcustomer\"} - POST\n\n","service":"request-logging"}
+{"level":"info","message":"/api/user/signup - {\"email\":\"customer@test.com\",\"password\":\"testcustomer\"} - POST\n\n","service":"request-logging"}
+{"level":"info","message":"/api/user/signup - {\"email\":\"customer@test.com\",\"password\":\"testcustomer\"} - POST","service":"request-logging"}
+{"level":"info","message":"/api/user/signup - {\"email\":\"customer@test.com\",\"password\":\"testcustomer\"} - POST - ","service":"request-logging"}
+{"level":"info","message":"/api/products/getAllProducts - {\"email\":\"customer@test.com\",\"password\":\"testcustomer\"} - POST - ","service":"request-logging"}
+{"level":"info","message":"/api/products/getAllProducts - {} - POST - ","service":"request-logging"}
+{"level":"info","message":"/api/products/getAllProducts - {} - GET - ","service":"request-logging"}
