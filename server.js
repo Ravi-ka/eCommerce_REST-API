@@ -1,12 +1,14 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
+import swagger from "swagger-ui-express";
 
 import ProductRouter from "./src/features/product/product.routes.js";
 import UserRouter from "./src/features/user/user.routes.js";
 import CartRouter from "./src/features/cart/cartItem.routes.js";
 import basicAuthorizer from "./src/middlewares/basicAuth.middleware.js";
 import jwtAuth from "./src/middlewares/jwt.middleware.js";
+import apiDocs from "./swagger.json" assert { type: "json" };
 
 const server = express();
 const port = 4000;
@@ -35,6 +37,8 @@ server.use(
   })
 );
 server.use(bodyParser.json());
+// Swagger Setup
+server.use("/api-docs", swagger.serve, swagger.setup(apiDocs));
 
 // Default Routes
 server.get("/", (req, res) => {
@@ -50,11 +54,11 @@ server.use("/api/cart", jwtAuth, CartRouter);
 
 // Handling 404 requests
 server.use("*", (req, res) => {
-  res
-    .status(404)
-    .send(
-      `The requested path ${req.originalUrl} is not found. Please check our documentation for more information.`
-    );
+  res.status(404).json({
+    error: "The requested page is unavailable",
+    message: "Please refer to the below or /api-docs path for more information",
+    API_Documentation: "http://localhost:4000/api-docs",
+  });
 });
 
 // Listening Port
