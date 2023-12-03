@@ -9,6 +9,7 @@ import CartRouter from "./src/features/cart/cartItem.routes.js";
 import basicAuthorizer from "./src/middlewares/basicAuth.middleware.js";
 import jwtAuth from "./src/middlewares/jwt.middleware.js";
 import apiDocs from "./swagger.json" assert { type: "json" };
+import loggerMiddleware from "./src/middlewares/logger.middleware.js";
 
 const server = express();
 const port = 4000;
@@ -40,6 +41,8 @@ server.use(bodyParser.json());
 // Swagger Setup
 server.use("/api-docs", swagger.serve, swagger.setup(apiDocs));
 
+// Logging
+server.use(loggerMiddleware);
 // Default Routes
 server.get("/", (req, res) => {
   res.send("<center><h2>Welcome to the eCommerce REST API</h2></center>");
@@ -52,7 +55,7 @@ server.use("/api/user", UserRouter);
 // CartItem Routes
 server.use("/api/cart", jwtAuth, CartRouter);
 
-// Handling 404 requests
+// Handling 404 API requests
 server.use("*", (req, res) => {
   res.status(404).json({
     error: "The requested page is unavailable",
