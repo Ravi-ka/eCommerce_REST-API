@@ -10,6 +10,7 @@ import basicAuthorizer from "./src/middlewares/basicAuth.middleware.js";
 import jwtAuth from "./src/middlewares/jwt.middleware.js";
 import apiDocs from "./swagger.json" assert { type: "json" };
 import loggerMiddleware from "./src/middlewares/logger.middleware.js";
+import ApplicationError from "./src/error-handler/applicationError.js";
 
 const server = express();
 const port = 4000;
@@ -54,6 +55,15 @@ server.use("/api/products", jwtAuth, ProductRouter);
 server.use("/api/user", UserRouter);
 // CartItem Routes
 server.use("/api/cart", jwtAuth, CartRouter);
+
+// Error Handler Middleware
+server.use((err, req, res, next) => {
+  console.log(err);
+  if (err instanceof ApplicationError) {
+    res.status(err.code).send(err.message);
+  }
+  res.status(500).send("Something went wrong. Please try again later");
+});
 
 // Handling 404 API requests
 server.use("*", (req, res) => {

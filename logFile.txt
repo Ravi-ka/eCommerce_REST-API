@@ -5,3 +5,7 @@
 {"level":"info","message":"/api/products/getAllProducts - {\"email\":\"customer@test.com\",\"password\":\"testcustomer\"} - POST - ","service":"request-logging"}
 {"level":"info","message":"/api/products/getAllProducts - {} - POST - ","service":"request-logging"}
 {"level":"info","message":"/api/products/getAllProducts - {} - GET - ","service":"request-logging"}
+{"level":"info","message":"/api/products/rate?userID=2&productID=10&rating=5 - {} - POST - ","service":"request-logging"}
+{"level":"info","message":"/api/products/rate?userID=2&productID=10&rating=5 - {} - POST - ","service":"request-logging"}
+{"level":"info","message":"/api/products/rate?userID=12&productID=10&rating=5 - {} - POST - ","service":"request-logging"}
+{"level":"info","message":"/api/products/rate?userID=2&productID=2&rating=5 - {} - POST - ","service":"request-logging"}
