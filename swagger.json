@@ -23,9 +23,64 @@
     "/api/products/getAllProducts": {
       "get": {
         "tags": ["Products API"],
-        "summary": "Get Products",
+        "summary": "Get All Products",
         "description": "User will get all the product details. Need the JWT token to access this API. Please signIn to get the token.",
         "security": [{ "JWT": {} }],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/products/:id": {
+      "get": {
+        "tags": ["Products API"],
+        "summary": "Get Products By ID",
+        "description": "User will get all the product details by the productID. Need the JWT token to access this API. Please signIn to get the token.",
+        "security": [{ "JWT": {} }],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/products/addProduct": {
+      "post": {
+        "tags": ["Products API"],
+        "summary": "Add new Products",
+        "description": "User will able to add new products. Need the JWT token to access this API. Please signIn to get the token.",
+        "security": [{ "JWT": {} }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "price": {
+                    "type": "integer"
+                  },
+                  "category": {
+                    "type": "string"
+                  },
+                  "size": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK"
