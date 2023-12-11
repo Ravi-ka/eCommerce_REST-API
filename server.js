@@ -11,6 +11,7 @@ import jwtAuth from "./src/middlewares/jwt.middleware.js";
 import apiDocs from "./swagger.json" assert { type: "json" };
 import loggerMiddleware from "./src/middlewares/logger.middleware.js";
 import ApplicationError from "./src/error-handler/applicationError.js";
+import connectToMongoDB from "./src/config/mongodbConnection.js";
 
 const server = express();
 const port = 4000;
@@ -77,5 +78,9 @@ server.use("*", (req, res) => {
 // Listening Port
 server.listen(port, (err) => {
   if (err) console.log(err);
-  else console.log(`Server is running on port ${port}`);
+  else {
+    console.log("========= Running Servers ========");
+    console.log(`Node.js Server running on port ${port}`);
+    connectToMongoDB();
+  }
 });

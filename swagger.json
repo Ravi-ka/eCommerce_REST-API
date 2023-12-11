@@ -15,7 +15,8 @@
       "JWT": {
         "in": "header",
         "name": "Authorization",
-        "type": "apiKey"
+        "type": "apiKey",
+        "description": "Use the /signin API to generate the JWT Token"
       }
     }
   },
