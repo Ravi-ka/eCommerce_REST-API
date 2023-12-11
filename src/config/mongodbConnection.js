@@ -14,5 +14,16 @@ const connectToMongoDB = () => {
     });
 };
 
+/* Connect to MongoDB using async/await
+const connectToMongoDB = async () => {
+  try {
+    await MongoClient.connect(url);
+    console.log("Connected to MongoDB");
+  } catch (error) {
+    console.log(error);
+  }
+};
+*/
+
 export default connectToMongoDB;
 // ! Call this function on the server.js file, while connection to the Node.js server
