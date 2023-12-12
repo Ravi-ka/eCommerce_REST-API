@@ -3,9 +3,11 @@ import { MongoClient } from "mongodb";
 // Connection URL
 const url = "mongodb://127.0.0.1:27017/eCommerceDB";
 
-const connectToMongoDB = () => {
+let client;
+export const connectToMongoDB = () => {
   MongoClient.connect(url)
-    .then((client) => {
+    .then((clientInstance) => {
+      client = clientInstance;
       console.log(`Connected to MongoDB Server - ${url}`);
       console.log("==================================");
     })
@@ -14,6 +16,9 @@ const connectToMongoDB = () => {
     });
 };
 
+export const getDB = () => {
+  return client.db();
+};
 /* Connect to MongoDB using async/await
 const connectToMongoDB = async () => {
   try {
@@ -25,5 +30,4 @@ const connectToMongoDB = async () => {
 };
 */
 
-export default connectToMongoDB;
 // ! Call this function on the server.js file, while connection to the Node.js server
