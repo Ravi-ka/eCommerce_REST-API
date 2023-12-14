@@ -7,3 +7,5 @@
 # UserController
 - SignUp - Email, Name, Password, TypeOfUser(Customer/Seller) - Done
 - SignIn - Email, Password - Done
+
+Test
