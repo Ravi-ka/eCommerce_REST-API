@@ -2,8 +2,8 @@
   "openapi": "3.0.0",
   "info": {
     "version": "1.0.0",
-    "description": "API for E-Commerce application",
-    "title": "E-commerce REST API"
+    "description": "REST API for the E-Commerce application",
+    "title": "E-commerce REST API's"
   },
   "server": [
     {
