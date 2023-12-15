@@ -56,3 +56,7 @@
 {"level":"info","message":"/api/products/get/657c6a3f2002e8721b9d0e81 - {} - GET - ","service":"request-logging"}
 {"level":"info","message":"/api/products/get/657c6a3f2002e8721b9d0e81 - {} - GET - ","service":"request-logging"}
 {"level":"info","message":"/api/products/get/657c6a3f2002e8721b9d0e81 - {} - GET - ","service":"request-logging"}
+{"level":"info","message":"/api/products/addProduct - {} - POST - ","service":"request-logging"}
+{"level":"info","message":"/api/products/addProduct - {} - POST - ","service":"request-logging"}
+{"level":"info","message":"/api/products/get/657c82c4fa088ac6186be852 - {} - GET - ","service":"request-logging"}
+{"level":"info","message":"/api/products/get/657c82c4fa088ac6186be852 - {} - GET - ","service":"request-logging"}

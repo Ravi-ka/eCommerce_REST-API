@@ -1,5 +1,7 @@
 # eCommerce-API
+
 This repo contains the backend APIs for the eCommerce application.
+
 <h2 align="left">Tech Stack for this Repo 🔻</h2>
 
 ###
@@ -23,17 +25,23 @@ This repo contains the backend APIs for the eCommerce application.
 </div>
 
 ###
-<h4>Key Functionalties :</h4>
-<p align="left"><b>🔻JWT Authentication</b> <br>
+
+<hr>
+<h4><u>Key Functionalties :</u></h4>
+<p align="left"><b>🔻JWT Authentication</b><br>
+  🔻<b>Password Hashing using bcrypt</b> <br>
+  🔻<b>Repository Pattern to manage MongoDB Operations</b> <br>
   🔻<b>Swagger - API Documentation</b> <br>
   🔻<b>Winston Logger</b> <br>
   🔻<b>Handled CORS Error</b> <br>
-  🔻<b>Securing API </b> <br>
+  🔻<b>Securing API Path</b> <br>
   🔻<b>Application Level Error Handling</b> <br>
+  
   
 </p>
 
 ###
 
+<hr>
 <br clear="both">
-<h6>Project Status: In progress</h6>
+<h6>Project Status: &ensp;<i>In progress</i></h6>
