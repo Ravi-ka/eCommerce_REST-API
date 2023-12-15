@@ -45,7 +45,7 @@ export default class UserController {
               userID: checkUserPassword.id,
               email: checkUserPassword.email,
             },
-            "xfv1jbNKTc4hbPUS9OXPBQ30iVlmqA4T",
+            process.env.JWT_SECRET,
             {
               algorithm: "HS256",
               expiresIn: "1h",

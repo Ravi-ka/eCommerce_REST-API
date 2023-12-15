@@ -1,7 +1,9 @@
+import "./src/config/dotenv.js"; // ! This file should at the 1st file of the code
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import swagger from "swagger-ui-express";
+import dotenv from "dotenv";
 
 import ProductRouter from "./src/features/product/product.routes.js";
 import UserRouter from "./src/features/user/user.routes.js";
@@ -15,6 +17,9 @@ import { connectToMongoDB } from "./src/config/mongodbConnection.js";
 
 const server = express();
 const port = 4000;
+
+// load all the environment variables in  the application
+dotenv.config(); // This should be declared immediately after the create server code
 
 // CORS Policy Configuration
 const corsOptions = {
