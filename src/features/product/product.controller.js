@@ -1,33 +1,59 @@
+import ApplicationError from "../../error-handler/applicationError.js";
+import { logger } from "../../middlewares/logger.middleware.js";
 import ProductModel from "./product.model.js";
 import { products } from "./product.model.js";
+import ProductRepository from "./product.repository.js";
 
 export default class ProductController {
-  getAllProducts(req, res) {
-    const productList = ProductModel.getAll();
-    res.status(200).send(productList);
+  constructor() {
+    this.productRepository = new ProductRepository();
   }
 
-  getProductById(req, res) {
-    const id = req.params.id;
-    const productFound = ProductModel.getById(id);
-    if (productFound) {
-      res.status(200).send(productFound);
-    } else res.status(404).send("Product Not Found");
+  async getAllProducts(req, res) {
+    try {
+      const productList = await this.productRepository.getAll();
+      return res.status(200).send(productList);
+    } catch (error) {
+      console.log(error);
+      return res.status(200).send("Something went wrong");
+    }
   }
 
-  addNewProduct(req, res) {
-    const { name, price, sizes, category } = req.body;
-    const newProduct = {
-      name,
-      price: parseFloat(price),
-      imageUrl: req.file.filename,
-      category,
-      size: sizes.split(","),
-    };
-    const result = ProductModel.addProduct(newProduct);
-    if (result) {
-      res.status(201).send(products);
-    } else res.send("Something went wrong while adding the product");
+  async getProductById(req, res) {
+    try {
+      const id = req.params.id;
+      const productFound = await this.productRepository.getById(id);
+      if (productFound) {
+        return res.status(200).send(productFound);
+      } else {
+        return res.status(404).send("Product Not Found");
+      }
+    } catch (error) {
+      console.log(error);
+      return res.status(200).send("Something went wrong");
+    }
+  }
+
+  async addNewProduct(req, res) {
+    try {
+      const { name, desc, price, sizes, category } = req.body;
+      const newProduct = new ProductModel(
+        name,
+        desc,
+        parseFloat(price),
+        req.file.filename,
+        category,
+        sizes.split(",")
+      );
+      const newItem = await this.productRepository.addProduct(newProduct);
+      if (newItem) {
+        res.status(201).send(newProduct);
+      } else res.send("Something went wrong while adding the product");
+    } catch (error) {
+      console.log(error);
+      logger.error(error);
+      return res.status(200).send("Something went wrong");
+    }
   }
 
   filterProducts(req, res) {

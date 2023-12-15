@@ -34,3 +34,25 @@
 {"level":"info","message":"/api/user/signup - {\"name\":\"Seller User 2\",\"email\":\"seller_2@test.com\",\"password\":\"testuser\",\"userType\":\"seller\"} - POST - ","service":"request-logging"}
 {"level":"info","message":"/api/user/signup - {\"name\":\"Seller User 3\",\"email\":\"seller_3@test.com\",\"password\":\"testuser\",\"userType\":\"seller\"} - POST - ","service":"request-logging"}
 {"level":"info","message":"/api/user/signup - {\"name\":\"Seller User 3\",\"email\":\"seller_3@test.com\",\"password\":\"testuser\",\"userType\":\"seller\"} - POST - ","service":"request-logging"}
+{"level":"info","message":"/api/products/addProduct - {} - POST - ","service":"request-logging"}
+{"level":"info","message":"/api/products/addProduct - {} - POST - ","service":"request-logging"}
+{"level":"info","message":"/api/products/addProduct - {} - POST - ","service":"request-logging"}
+{"level":"info","message":"/api/products/addProduct - {} - POST - ","service":"request-logging"}
+{"level":"info","message":"/api/products/addProduct - {} - POST - ","service":"request-logging"}
+{"level":"info","message":"/api/products/addProduct - {} - POST - ","service":"request-logging"}
+{"level":"info","message":"/api/products/getAllProducts - {} - GET - ","service":"request-logging"}
+{"level":"info","message":"/api/products/getAllProducts - {} - GET - ","service":"request-logging"}
+{"level":"info","message":"/api/products/getAllProducts - {} - GET - ","service":"request-logging"}
+{"level":"info","message":"/api/products/getAllProducts - {} - GET - ","service":"request-logging"}
+{"level":"info","message":"/api/products/getAllProducts - {} - GET - ","service":"request-logging"}
+{"level":"info","message":"/api/products/getAllProducts - {} - GET - ","service":"request-logging"}
+{"level":"info","message":"/api/products/getAllProducts - {} - GET - ","service":"request-logging"}
+{"level":"info","message":"/api/products/get/657c6a3f2002e8721b9d0e81 - {} - GET - ","service":"request-logging"}
+{"level":"info","message":"/api/products/get/657c6a3f2002e8721b9d0e81 - {} - GET - ","service":"request-logging"}
+{"level":"info","message":"/api/products/get/657c6a3f2002e8721b9d0e81 - {} - GET - ","service":"request-logging"}
+{"level":"info","message":"/api/products/get/657c6a3f2002e8721b9d0e81 - {} - GET - ","service":"request-logging"}
+{"level":"info","message":"/api/products/get/657c6a3f2002e8721b9d0e81 - {} - GET - ","service":"request-logging"}
+{"level":"info","message":"/api/products/get/657c6a3f2002e8721b9d0e81 - {} - GET - ","service":"request-logging"}
+{"level":"info","message":"/api/products/get/657c6a3f2002e8721b9d0e81 - {} - GET - ","service":"request-logging"}
+{"level":"info","message":"/api/products/get/657c6a3f2002e8721b9d0e81 - {} - GET - ","service":"request-logging"}
+{"level":"info","message":"/api/products/get/657c6a3f2002e8721b9d0e81 - {} - GET - ","service":"request-logging"}
