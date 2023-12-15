@@ -1,6 +1,8 @@
 # eCommerce-API
 
-This repo contains the backend APIs for the eCommerce application.
+e-Commerce Back-End API - utilizing RESTful principles
+
+<p align="left">🌐 <b>RESTful Architecture:</b> Engineered a scalable and efficient backend system following RESTful principles, ensuring flexibility and ease of integration with various front-end applications.<br><br>🔗 <b>Secure Transactions:</b> Implemented robust security measures to safeguard sensitive user data, prioritizing data integrity and privacy.<br><br>📈 <b>Scalability: </b>Designed the API with scalability in mind, allowing for seamless growth as the e-commerce platform expands.</p>
 
 <h2 align="left">Tech Stack for this Repo 🔻</h2>
 
@@ -43,5 +45,8 @@ This repo contains the backend APIs for the eCommerce application.
 ###
 
 <hr>
+
+###
+
 <br clear="both">
 <h6>Project Status: &ensp;<i>In progress</i></h6>
