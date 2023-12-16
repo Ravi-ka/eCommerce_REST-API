@@ -43,6 +43,31 @@ class ProductRepository {
       throw new ApplicationError("something went wrong with database", 500);
     }
   }
+
+  async filterProduct(minPrice, maxPrice, category) {
+    try {
+      const db = getDB();
+      const collection = db.collection(this.collection);
+      let filteredExpression = {};
+      if (minPrice) {
+        filteredExpression.price = { $gte: parseFloat(minPrice) };
+      }
+      if (maxPrice) {
+        filteredExpression.price = {
+          ...filteredExpression.price,
+          $lte: parseFloat(maxPrice),
+        };
+      }
+      if (category) {
+        filteredExpression.category = category;
+      }
+      const result = await collection.find(filteredExpression).toArray();
+      return result;
+    } catch (error) {
+      console.log(error);
+      throw new ApplicationError("something went wrong with database", 500);
+    }
+  }
 }
 
 export default ProductRepository;

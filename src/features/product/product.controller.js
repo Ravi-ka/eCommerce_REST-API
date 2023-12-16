@@ -56,13 +56,22 @@ export default class ProductController {
     }
   }
 
-  filterProducts(req, res) {
-    const minPrice = req.query.minPrice;
-    const maxPrice = req.query.maxPrice;
-    const category = req.query.category;
-    const result = ProductModel.filter(minPrice, maxPrice, category);
-    if (result) res.status(200).send(result);
-    else res.status(404).send("Something went wrong");
+  async filterProducts(req, res) {
+    try {
+      const minPrice = req.query.minPrice;
+      const maxPrice = req.query.maxPrice;
+      const category = req.query.category;
+      const result = await this.productRepository.filterProduct(
+        minPrice,
+        maxPrice,
+        category
+      );
+      return res.status(200).send(result);
+    } catch (error) {
+      console.log(error);
+      logger.error(error);
+      return res.status(200).send("Something went wrong");
+    }
   }
 
   rateProduct(req, res) {
