@@ -68,6 +68,34 @@ class ProductRepository {
       throw new ApplicationError("something went wrong with database", 500);
     }
   }
+
+  async rateProduct(userID, productID, rating) {
+    try {
+      const db = getDB();
+      const collection = db.collection(this.collection);
+
+      // 1. Removes existing entry
+      await collection.updateOne(
+        { _id: new ObjectId(productID) },
+        {
+          $pull: { ratings: { userID: new ObjectId(userID) } },
+        }
+      );
+
+      // 2. Add new entry
+      await collection.updateOne(
+        {
+          _id: new ObjectId(productID),
+        },
+        {
+          $push: { ratings: { userID: new ObjectId(userID), rating } },
+        }
+      );
+    } catch (err) {
+      console.log(err);
+      throw new ApplicationError("Something went wrong with database", 500);
+    }
+  }
 }
 
 export default ProductRepository;
