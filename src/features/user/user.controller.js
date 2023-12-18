@@ -42,8 +42,8 @@ export default class UserController {
           // 3. If both email and password are correct, then create the JWT token
           const token = jwt.sign(
             {
-              userID: checkUserPassword.id,
-              email: checkUserPassword.email,
+              userID: checkUserEmail._id,
+              email: checkUserEmail.email,
             },
             process.env.JWT_SECRET,
             {

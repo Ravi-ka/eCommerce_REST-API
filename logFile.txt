@@ -62,3 +62,11 @@
 {"level":"info","message":"/api/products/get/657c82c4fa088ac6186be852 - {} - GET - ","service":"request-logging"}
 {"level":"info","message":"/api/products/rate - {\"productID\":\"657c6a025505b7826c6c5560\",\"rating\":4.6} - GET - ","service":"request-logging"}
 {"level":"info","message":"/api/products/rate - {\"productID\":\"657c6a025505b7826c6c5560\",\"rating\":4.6} - POST - ","service":"request-logging"}
+{"level":"info","message":"/api/products/rate - {\"productID\":\"657c6a025505b7826c6c5560\",\"rating\":4.8} - POST - ","service":"request-logging"}
+{"level":"info","message":"/api/products/rate - {\"productID\":\"657c6a025505b7826c6c5560\",\"rating\":4.8} - POST - ","service":"request-logging"}
+{"level":"info","message":"/api/products/rate - {\"productID\":\"657c6a025505b7826c6c5560\",\"rating\":4.8} - POST - ","service":"request-logging"}
+{"level":"info","message":"/api/products/rate - {\"productID\":\"657c6a025505b7826c6c5560\",\"rating\":4.8} - POST - ","service":"request-logging"}
+{"level":"info","message":"/api/products/rate - {\"productID\":\"657c6a025505b7826c6c5560\",\"rating\":4.8} - POST - ","service":"request-logging"}
+{"level":"info","message":"/api/products/rate - {\"productID\":\"657c6a025505b7826c6c5560\",\"rating\":4.8} - POST - ","service":"request-logging"}
+{"level":"info","message":"/api/products/rate - {\"productID\":\"657c6a025505b7826c6c5560\",\"rating\":4.8} - POST - ","service":"request-logging"}
+{"level":"info","message":"/api/products/rate - {\"productID\":\"657c6a025505b7826c6c5560\",\"rating\":4.5} - POST - ","service":"request-logging"}
