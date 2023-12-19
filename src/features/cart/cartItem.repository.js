@@ -10,12 +10,15 @@ export default class CartItemsRepository {
     try {
       const db = getDB();
       const collection = db.collection(this.collection);
-      const newItem = {
-        userID: new ObjectId(userID),
-        productID: new ObjectId(productID),
-        quantity,
-      };
-      const result = await collection.insertOne(newItem);
+
+      const result = await collection.updateOne(
+        {
+          userID: new ObjectId(userID),
+          productID: new ObjectId(productID),
+        },
+        { $inc: { quantity: quantity } },
+        { upsert: true }
+      );
       return result;
     } catch (error) {
       console.log(error);
