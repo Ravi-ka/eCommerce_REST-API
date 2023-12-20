@@ -88,4 +88,15 @@ export default class ProductController {
       next(err);
     }
   }
+
+  async averagePrice(req, res, next) {
+    try {
+      const result =
+        await this.productRepository.averageProductPricePerCategory();
+      return res.status(200).send(result);
+    } catch (error) {
+      console.log(error);
+      return res.status(200).send("Something went wrong");
+    }
+  }
 }

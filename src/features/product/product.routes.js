@@ -23,5 +23,7 @@ ProductRouter.get("/filter", (req, res) => {
 ProductRouter.post("/rate", (req, res) => {
   productController.rateProduct(req, res);
 });
-
+ProductRouter.get("/averagePrice", (req, res) => {
+  productController.averagePrice(req, res);
+});
 export default ProductRouter;
