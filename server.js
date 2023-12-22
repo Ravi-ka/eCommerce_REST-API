@@ -14,6 +14,7 @@ import apiDocs from "./swagger.json" assert { type: "json" };
 import loggerMiddleware from "./src/middlewares/logger.middleware.js";
 import ApplicationError from "./src/error-handler/applicationError.js";
 import { connectToMongoDB } from "./src/config/mongodbConnection.js";
+import OrderRouter from "./src/features/order/order.routes.js";
 
 const server = express();
 const port = 4000;
@@ -61,6 +62,8 @@ server.use("/api/products", jwtAuth, ProductRouter);
 server.use("/api/user", UserRouter);
 // CartItem Routes
 server.use("/api/cart", jwtAuth, CartRouter);
+// Order Routes
+server.use("/api/order", jwtAuth, OrderRouter);
 
 // Error Handler Middleware
 server.use((err, req, res, next) => {
