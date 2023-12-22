@@ -5,6 +5,7 @@ import cors from "cors";
 import swagger from "swagger-ui-express";
 import dotenv from "dotenv";
 
+import connectToMongoose from "./src/config/mongooseConnection.js";
 import ProductRouter from "./src/features/product/product.routes.js";
 import UserRouter from "./src/features/user/user.routes.js";
 import CartRouter from "./src/features/cart/cartItem.routes.js";
@@ -89,6 +90,7 @@ server.listen(port, (err) => {
   else {
     console.log("========= Running Servers ========");
     console.log(`Node.js Server running on port ${port}`);
-    connectToMongoDB();
+    //connectToMongoDB(); //!Replacing MongoDB connection with Mongoose
+    connectToMongoose();
   }
 });
