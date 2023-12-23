@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 
 import UserModel from "./user.model.js";
 import ApplicationError from "../../error-handler/applicationError.js";
-import { UserRepository } from "./user.repository.js";
+import UserRepository from "./user.repository.js";
 import { logger } from "../../middlewares/logger.middleware.js";
 
 export default class UserController {
@@ -14,9 +14,10 @@ export default class UserController {
     try {
       const { name, email, password, userType } = req.body;
       const hashedPassword = await bcrypt.hash(password, 12);
-      const newUser = new UserModel(name, email, hashedPassword, userType);
-      await this.userRepository.signUp(newUser);
-      res.status(201).send(newUser);
+      const user = new UserModel(name, email, hashedPassword, userType);
+      //const newUser = new UserModel(user);
+      await this.userRepository.signUp(user);
+      res.status(201).send(user);
     } catch (error) {
       console.log(error);
       throw new ApplicationError("Something went wrong", 500);
@@ -25,20 +26,19 @@ export default class UserController {
 
   async signIn(req, res) {
     try {
+      const { email, password } = req.body;
       // 1. Find user by email
-      const checkUserEmail = await this.userRepository.findByEmail(
-        req.body.email
-      );
-      // console.log(checkUserEmail);
+      const checkUserEmail = await this.userRepository.findByEmail(email);
       if (!checkUserEmail) {
         return res.status(400).send("User Not Found or Incorrect Credentials");
       } else {
         // 2. Compare the user password with hashedPassword
-        const checkUserPassword = await bcrypt.compare(
-          req.body.password,
+        const passwordMatch = await bcrypt.compare(
+          password,
           checkUserEmail.password
         );
-        if (checkUserPassword) {
+        console.log(passwordMatch);
+        if (passwordMatch) {
           // 3. If both email and password are correct, then create the JWT token
           const token = jwt.sign(
             {
