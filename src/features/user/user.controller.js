@@ -10,6 +10,19 @@ export default class UserController {
   constructor() {
     this.userRepository = new UserRepository();
   }
+
+  async resetPassword(req, res) {
+    try {
+      const userID = req.userID;
+      const { newPassword } = req.body;
+      const hashedPassword = await bcrypt.hash(newPassword, 12);
+      await this.userRepository.passwordReset(userID, hashedPassword);
+      return res.status(200).send("New password has been updated");
+    } catch (error) {
+      console.log(error);
+      return res.status(200).send("Something went wrong");
+    }
+  }
   async signUp(req, res) {
     try {
       const { name, email, password, userType } = req.body;
@@ -37,7 +50,6 @@ export default class UserController {
           password,
           checkUserEmail.password
         );
-        console.log(passwordMatch);
         if (passwordMatch) {
           // 3. If both email and password are correct, then create the JWT token
           const token = jwt.sign(

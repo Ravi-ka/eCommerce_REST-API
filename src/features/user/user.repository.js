@@ -34,4 +34,18 @@ export default class UserRepository {
       throw new ApplicationError("Something went wrong with database", 500);
     }
   }
+
+  async passwordReset(userID, hashedPassword) {
+    try {
+      const user = await UserModel.findById(userID);
+      if (user) {
+        user.password = hashedPassword;
+      }
+      await user.save();
+      return user;
+    } catch (error) {
+      console.log(error);
+      throw new ApplicationError("Something went wrong with database", 500);
+    }
+  }
 }
