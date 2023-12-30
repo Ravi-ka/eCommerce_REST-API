@@ -7,4 +7,10 @@ export const productSchema = new mongoose.Schema({
   //imageUrl: String,
   category: String,
   inStock: Number,
+  reviews: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "reviews",
+    },
+  ],
 });

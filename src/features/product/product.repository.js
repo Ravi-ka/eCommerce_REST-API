@@ -2,7 +2,12 @@ import { ObjectId } from "mongodb";
 import { getDB } from "../../config/mongodbConnection.js";
 import ApplicationError from "../../error-handler/applicationError.js";
 import logger from "../../middlewares/logger.middleware.js";
+import mongoose from "mongoose";
+import { productSchema } from "./product.schema.js";
+import { reviewSchema } from "./review.schema.js";
 
+const ProductModel = new mongoose.model("products", productSchema);
+const ReviewModel = new mongoose.model("reviews", reviewSchema);
 class ProductRepository {
   constructor() {
     this.collection = "products";
@@ -71,26 +76,28 @@ class ProductRepository {
 
   async rateProduct(userID, productID, rating) {
     try {
-      const db = getDB();
-      const collection = db.collection(this.collection);
-
-      // 1. Removes existing entry
-      await collection.updateOne(
-        { _id: new ObjectId(productID) },
-        {
-          $pull: { ratings: { userID: new ObjectId(userID) } },
-        }
-      );
-
-      // 2. Add new entry
-      await collection.updateOne(
-        {
-          _id: new ObjectId(productID),
-        },
-        {
-          $push: { ratings: { userID: new ObjectId(userID), rating } },
-        }
-      );
+      // 1. Check if the product exists
+      const checkProduct = await ProductModel.findById(productID);
+      if (!checkProduct) {
+        throw new Error("Product Not Found");
+      }
+      // 2. If the product is found, find the existing review
+      const userReview = await ReviewModel.findOne({
+        product: new ObjectId(productID),
+        user: new ObjectId(userID),
+      });
+      if (userReview) {
+        userReview.rating = rating;
+        await userReview.save();
+      } else {
+        // Create a new review
+        const newReview = await new ReviewModel({
+          product: new ObjectId(productID),
+          user: new ObjectId(userID),
+          rating: rating,
+        });
+        await newReview.save();
+      }
     } catch (err) {
       console.log(err);
       throw new ApplicationError("Something went wrong with database", 500);
