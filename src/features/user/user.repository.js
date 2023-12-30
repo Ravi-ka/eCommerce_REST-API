@@ -13,6 +13,9 @@ export default class UserRepository {
       return newUser;
     } catch (error) {
       console.log(error);
+      if (error instanceof mongoose.Error) {
+        throw new ApplicationError(error.message, 500);
+      }
       throw new ApplicationError("Something went wong with database", 500);
     }
   }
