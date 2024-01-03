@@ -5,19 +5,25 @@ import logger from "../../middlewares/logger.middleware.js";
 import mongoose from "mongoose";
 import { productSchema } from "./product.schema.js";
 import { reviewSchema } from "./review.schema.js";
+import { CategorySchema } from "./category.schema.js";
 
 const ProductModel = new mongoose.model("products", productSchema);
 const ReviewModel = new mongoose.model("reviews", reviewSchema);
+const CategoryModel = new mongoose.model("categories", CategorySchema);
 class ProductRepository {
   constructor() {
     this.collection = "products";
   }
-  async addProduct(newProduct) {
+  async addProduct(productData) {
     try {
-      const db = getDB();
-      const collection = db.collection(this.collection);
-      const result = await collection.insertOne(newProduct);
-      return result;
+      // 1. Adding Product
+      const newProduct = new ProductModel(productData);
+      const savedProduct = await newProduct.save();
+      // 2. Updating Categories
+      await CategoryModel.updateMAny(
+        { _id: { $in: productData.category } },
+        { $push: { products: new ObjectId(savedProduct._id) } }
+      );
     } catch (error) {
       console.log(error);
       logger.error(error);
