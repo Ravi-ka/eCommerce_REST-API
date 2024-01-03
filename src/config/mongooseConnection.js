@@ -7,7 +7,7 @@ const url = process.env.DB_URL;
 export default async function connectToMongoose() {
   try {
     await mongoose.connect(url);
-    console.log(`Connected to MongoDB server using Mongoose on ${url}`);
+    console.log(`Connected to MongoDB Cloud server using Mongoose: ${url}`);
     console.log("==================================");
     addCategories();
   } catch (error) {
